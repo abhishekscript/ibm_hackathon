@@ -1,0 +1,9 @@
+{  
+   "parameters":{
+      "classifier_ids":[  
+         "foods"
+      ],
+      "owner":"IBM",
+      "threshold":".5"
+   }
+}

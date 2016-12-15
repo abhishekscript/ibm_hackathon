@@ -1,0 +1,12 @@
+applications:
+- path: .
+  memory: 1024M
+  instances: 1
+  domain: mybluemix.net
+  name: flask-test-ml
+  host: flask-test-ml
+  disk_quota: 1024M
+  services:
+  - Compose for MongoDB-e6
+  - Compose for Elasticsearch-h4
+  buildpack: python_buildpack
