@@ -76,6 +76,18 @@ def inseart():
     print res
     return jsonify({"hi":res})
 
+@app.route("/search",methods=['POST'])
+def searchData():
+    try:
+        items = request.json['items']
+        searchStr = ' '.join(items)
+        query = { "query" : { "match" : {  "ingredients" : searchStr  } } }
+
+        data = ElasticModule.search("receipe_db","receipe_table", query)['hits']['hits']
+        return jsonify({"data" : data })
+
+    except Exception as e:
+        return jsonify({"message" : str(e) })
 
 
 
