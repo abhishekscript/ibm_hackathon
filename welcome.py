@@ -64,8 +64,16 @@ def uploadImag():
     #return str(request.files)
     file = request.files['avatar']
     filename = secure_filename(file.filename)
-    file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename ))
-    return jsonify({ "message" : "done" })
+
+    extension = filename.rfind(".")
+    if extension>0:
+        file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename ))
+    else:
+        filename="temp.jpg"
+        file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename ))
+
+    #return ''.join(random.choice(string.lowercase) for i in range(10))
+    return jsonify({ "message" : filename })
 
 @app.route("/inseart", methods=[ 'POST' ] )
 def inseart():
